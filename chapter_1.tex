@@ -1,0 +1,64 @@
+\chapter{ЗАДАЧА ЛИНЕЙНОГО ПРОГРАММИРОВАНИЯ}
+
+\section{Постановка задачи}
+
+Предметом нашего внимания будет задача каноническая задача линейного программирования
+\begin{equation}
+	\begin{array}{cc}
+		c'x\longrightarrow max \\
+		Ax = b \\
+		x \geq 0, \\
+	\end{array}
+\end{equation}
+с векторной неизвестной $x\in R^n$ и неопределенными матричными коэффициентами \newline
+$A \in R^{m,n}, b \in R^m, c \in R^n$ из заданных замкнутых интервалов
+
+\begin{equation}
+	\mid A - A_0 \mid \leq \Delta A, \quad
+	\mid b - b_0 \mid \leq \Delta b, \quad
+	\mid c - c_0 \mid \leq \Delta c
+\end{equation}
+
+Требуется для множества задач (1.1), (1.2) определить понятие решения и разработать методы его нахождения.
+
+\section{Универсальные планы}
+
+Введём в рассмотрение неотрицательный $m$-вектор $\epsilon$, характеризующий точность выполнения равенства $Ax = b$. Назовем вектор $x\in R^n$ $\epsilon$-планом задачи (1.1), если $x\geq 0$ и $\mid Ax - b \mid \leq\epsilon$ для всех допустимых $A, b$.
+
+Согласно теореме 1.1 [1, c.13] вектор $x$ будет $\epsilon$-планом тогда и только тогда, когда удовлетворяет неравенствам 
+
+\begin{equation}
+	-\underline{A}x + \overline{b} \leq\epsilon, \quad
+	  \overline{A}x - \underline{b} \leq \epsilon, \quad
+	  x \geq 0
+\end{equation}
+
+Используя (1.3) и нижнию оценку линейной формы $c'x$ по допустимым коэффициентам, сформируем аппроксимирующую задачу ЛП
+
+\begin{equation}
+	\begin{array}{cccc}
+		c'x \longrightarrow max \\
+		-\underline{A}x - \epsilon \leq -\overline{b} \\
+		\overline{A}x - \epsilon \leq \underline{b} \\
+		x \geq 0
+	\end{array}
+\end{equation}
+
+с неизвестным вектором $x$. В аппроксимирующей задаче присутствует неизвестная невязка $\epsilon$. Если задать невязку достаточно большой (по норме), то теряется аппроксимативный смысл неравенств (1.4), если малой - то неравенства (1.4) станут несовместными. Поэтому необходимо ввести вспомогательную задачу ЛП для определения минимальной невязки 
+
+\begin{equation}
+	\begin{array}{cccc}
+		\epsilon_{m+1} \longrightarrow min \\
+		-\underline{A}x - \epsilon \leq -\overline{b} \\
+		\overline{A}x - \epsilon \leq \underline{b} \\
+		e'\epsilon - \epsilon_{m+1} \leq 0 \\
+		x \geq 0, \epsilon \geq 0
+	\end{array}
+\end{equation}
+
+Здесь $x, \epsilon, \epsilon_{m+1}$ - неизвестные, $e$ - вектор из $R^m$ с единичными координатами, $e'\epsilon$ - сумма координат (норма) невязки. \newline
+Во вспомогательной задаче форма ограничена снизу нулем и ограничения совместны, следовательно она имеет [3, c.176] хотя бы один оптимальный план $(\hat{x}, \hat{\epsilon}, \hat{\epsilon}_{m+1})$. Таким образом решение вспомогательной задачи (1.5) дает универсальный план $\hat{x}$, минимальную невязку $\hat{\epsilon}$ и ее норму $\hat{\epsilon}_{m+1}$.
+
+\section{Двойственные универсальные планы}
+
+\section{Решение задачи}
